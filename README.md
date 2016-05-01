@@ -5,3 +5,7 @@ Created for submission to [Riot's API Challenge](https://developer.riotgames.com
 Requires node > 4
 
 To start, run `npm start`
+
+
+
+wanted to do with tags, but skewed data too dramatically
