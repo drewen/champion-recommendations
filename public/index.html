@@ -8,12 +8,376 @@
 
   <link rel="stylesheet" href="styles.css">
 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.js"></script>
+
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 
 <body>
-  <div>Server works</div>
+	<div id="gradient"></div>
+	
+	<div id="bar">
+		<img id="logo" src="http://dotageeks.com/wp-content/uploads/2015/10/League-Of-Legends-Logo-2.png">
+		<br>
+		<h1>What Champion Should You Play?</h1>
+
+		<form>
+			<input class="summonername" type="text" name="summonername" placeholder="Enter Summoner Name"><select name="region">
+			  <option value="na" selected>NA</option>
+			  <option value="eune">EUNE</option>
+			  <option value="euw">EUW</option>
+			  <option value="kr">KR</option>
+			  <option value="lan">LAN</option>
+			  <option value="las">LAS</option>
+			  <option value="oce">OCE</option>
+			  <option value="ru">RU</option>
+			  <option value="tr">TR</option>
+			  <option value="sea">SEA</option>
+			</select>
+			<input class="submitting" type="submit" value="Submit">
+		</form>
+	</div>
+
+	<div id="content">
+		<div id="profile">
+			<h1>Your Profile</h1>
+			<h2>Your playstyle is:</h2>
+			<canvas id="myChart" width="50%" height="50%"></canvas>
+			<script>
+			var ctx = document.getElementById("myChart");
+
+			var myChart = new Chart(ctx, {
+			    type: 'doughnut',
+
+			    data: {
+			        labels: ["Assassin", "Fighter", "Mage", "Marksman", "Support", "Tank"],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [12, 19, 3, 5, 2, 3],
+			            backgroundColor: [
+				                "#FFC994",
+				                "#BC486F",
+				                "#2B818C",
+				                "#7123AF",
+				                "#990069",
+				                "#FF9877"
+				            ],
+			            borderWidth: [0,0,0,0,0,0]
+			        }]
+			    }
+			});
+
+			</script>
+
+			<table>
+				<tr>
+					<td>
+						<div class="circle assassin"></div>
+						Assassin
+					</td>
+					<td>
+						<div class="circle fighter"></div>
+						Fighter
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="circle mage"></div>
+						Mage
+					</td>
+					<td>
+						<div class="circle marksman"></div>
+						Marksman
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="circle support"></div>
+						Support
+					</td>
+					<td>
+						<div class="circle tank"></div>
+						Tank
+					</td>
+				</tr>
+			</table>
+			<br><br><br>
+
+			<h2>You have played:</h2>
+			<div id="prevplayed">
+				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Kindred.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Kennen.png">
+
+				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Tristana.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Leona.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Teemo.png">
+
+				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Annie.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Shyvana.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Ashe.png">
+
+				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/TwistedFate.png">
+			</div>
+		</div>
+
+		<div id="recommendations">
+			<h1>Recommendations</h1>
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+								</li>
+								<li>
+									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+								</li>
+								<li>
+									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+								</li>
+								<li>
+									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="spacing"></div>
+
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+								</li>
+								<li>
+									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+								</li>
+								<li>
+									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+								</li>
+								<li>
+									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+								</li>
+								<li>
+									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+								</li>
+								<li>
+									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+								</li>
+								<li>
+									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="spacing"></div>
+
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					Graphs
+				</div>
+			</div>
+
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					Graphs
+				</div>
+			</div>
+
+			<div class="spacing"></div>
+
+			<div class="recs">
+				<div class="champpic">
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+				</div>
+				<div class="champdesc">
+					<h2>Champion</h2>
+					Roles
+
+					Graphs
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:<br>
+					<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png">
+				</div>
+				<div class="role">
+					<h2>Assassin</h2>
+					An assassin is an agile champion that specializes in killing or disabling high value targets. Focused on infiltration, deception, and mobility, assassins are opportunistic hunters who find favorable moments within a fight before jumping into the fray. Regardless of the size of the enemy team, assassins specialize in positioning and artful killing. They strike when the time is right – no sooner, no later.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Assassin</h2>
+					An assassin is an agile champion that specializes in killing or disabling high value targets. Focused on infiltration, deception, and mobility, assassins are opportunistic hunters who find favorable moments within a fight before jumping into the fray. Regardless of the size of the enemy team, assassins specialize in positioning and artful killing. They strike when the time is right – no sooner, no later.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Fighter</h2>
+					Fighters are a diverse group of short-ranged combatants who excel at both dealing and surviving damage. With easy access to heavy, continuous damage and a host of innate defenses, fighters thrive in extended fights as they seek out enemies to take down, but their limited range puts them at constant risk of being kept at bay (or kited) by their opponents via crowd control, range and mobility.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Mage</h2>
+					Mages are champions who typically possess great reach, ability-based area of effect damage and crowd control, and who use all of these strengths in tandem with each other to trap and destroy enemies from a distance. Specializing in magic damage, mages excel at chaining their abilities together in powerful comboes in order to win fights, though their abilities also tend to be difficult to land and can be mitigated by their targets if they react in time.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Marksman</h2>
+					A marksman is a ranged attacker that sacrifices defensive power and utility to focus on dealing strong, continuous damage to individual targets. Typically focused on using their basic attacks more than their abilities, marksmen have the capability to scale and deal out devastating levels of damage in the late phase of any game.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Support</h2>
+					Supports are the most selfless champions in the game, forgoing personal power to assist their allies with potent utility and keep enemies at bay with crowd control. Weak when alone, supports are capable of massively amplifying their teammates' power to become the strongest class in group combat (or teamfights), supplying crucial utility or crowd control at clutch moments to save allies from death and enable takedowns on the enemy team.
+				</div>
+			</div>
+
+			<div class="ifnone">
+				<div class="free">
+					Free this week:
+				</div>
+				<div class="role">
+					<h2>Tank</h2>
+					Tanks are tough melee champions who sacrifice damage in exchange for powerful crowd control. While able to engage enemies in combat, a tank's purpose isn't usually to kill opponents; rather, tanks excel at disrupting enemies and diverting their focus to themselves, allowing them to lock down specific targets (or several targets at once), as well as remove (or peel) threats from their allies.
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="clear:both;"></div>
+
+	<div id="working">
+		<h1>How Does This Work?</h1>
+		<h2>Submit your Summoner Name and we’ll gather data about how you like to play. This will help us recommend champions that you might never have considered, but have similar play styles to what you already enjoy doing.</h2>
+
+		<h2>Reading and Using this Tool</h2>
+
+	</div>
 </body>
 </html>
