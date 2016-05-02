@@ -4,43 +4,46 @@ const app = express();
 const RecommendationEngine = require('./src/recommendationEngine')
 const routes = require('./src/routes')
 const riotApi = require('./src/riotApi')
+const requestPromiseCache = require('./src/requestPromiseCache')
 
 
 app.use(express.static('public'));
+
+// Recommendation Engine, which saves events and provides analytics to recommend
+// a champion for a particular summoner
 app.recommendationEngine = new RecommendationEngine()
 app.recommendationEngine.init().then(() => {
 
-  app.get('/', (req, res) => {
-    res.render('index.html');
-  });
+  // Caching layer for API requests. This initializes the Postgres DB for storage
+  requestPromiseCache('', { init: true }).then(() => {
 
-  routes.init(app)
+    app.get('/', (req, res) => {
+      res.render('index.html');
+    });
 
-  const fetchChampions = () => {
-    return riotApi.getAllRegionChampions()
-      .then(champions => {
-        app.champions = champions
-        setTimeout(fetchChampions, 15 * 1000 * 60)
-      })
-  }
+    routes.init(app)
 
-  const fetchChallenger = () => {
-    return riotApi.getChallengerData()
-    .then(players => {
-      app.challenger = players.entries
-      setTimeout(fetchChallenger, 30 * 1000 * 60)
-    })
-  }
+    // Fetch static champion data on boot, then once per hour after that
+    const fetchChampions = () => {
+      return riotApi.getAllRegionChampions()
+        .then(champions => {
+          app.champions = champions
+          setTimeout(fetchChampions, 60 * 1000 * 60)
+        })
+    }
 
-  fetchChampions()
+    fetchChampions()
 
-  fetchChallenger()
+    // Start up the continual refresh of the baseline, which fetches a random
+    // set of challenger-level players and adds them to the recommendation engine
+    routes.fetchChallenger(app)
 
-  const serverPort = config.get('SERVER_PORT')
+    // And start up our server.
+    const serverPort = config.get('SERVER_PORT')
 
-  app.listen(serverPort, function () {
-    console.log(`Listening on port ${serverPort}`);
-  });
+    app.listen(serverPort, function () {
+      console.log(`Listening on port ${serverPort}`);
+    });
+  })
 })
-
 

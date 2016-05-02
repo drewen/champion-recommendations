@@ -27,7 +27,8 @@ class RecommendationEngine {
       namespace: 'champions',
       person: playerId,
       action,
-      thing: champion
+      thing: champion,
+      expires_at: '2100-01-01'
     }])
   }
 
@@ -49,10 +50,10 @@ class RecommendationEngine {
       },
       // Player must have at least 5 'events', which include recent games and ranked champions
       minimum_history_required: 5,
-      // Use the last 25 players worth of records to calculate the recommendation
-      neighbourhood_search_size: 500,
-      // Must have 3 or more similarities to be considered
-      similarity_search_size: 3,
+      // Use the last 250 players worth of records to calculate the recommendation
+      neighbourhood_search_size: 5000,
+      // Must have 10 or more similarities to be considered
+      similarity_search_size: 10,
       // A player should have at most 20 records to use
       neighbourhood_size: 20,
       // Each similar player can provide 3 recommendations

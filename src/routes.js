@@ -11,7 +11,7 @@ function getChampionDataByIdAndRegion(app, champion, region) {
 function setRelations(app, summonerData) {
   const setRelationForPlayer = app.recommendationEngine.setRelation.bind(app.recommendationEngine, summonerData.id)
   console.log(`Clearing old relations from Event Store for ${summonerData.name}...`)
-  app.recommendationEngine.clearRelations(summonerData.id)
+  return app.recommendationEngine.clearRelations(summonerData.id)
     .then(() => {
       console.log(`Setting champion masteries relations for ${summonerData.name}...`)
       return Promise.map(summonerData.champions, champion => {
@@ -27,6 +27,41 @@ function setRelations(app, summonerData) {
     })
 }
 
+function populate (app, players) {
+  const region = players.region
+  return Promise.map(players.entries, player => {
+    return riotApi.getSummonerDataById(player.playerOrTeamId, region)
+      .then(summonerData => {
+        // Skip the massaging and event generation if this is cached
+        if(summonerData.cached) {
+          return true
+        }
+        if(!_.isEmpty(summonerData.champions)) {
+          summonerData.champions = _.map(summonerData.champions, champion =>
+            getChampionDataByIdAndRegion(app, champion, region))
+        }
+        return setRelations(app, summonerData)
+        .then(() => {
+          return Promise.delay(config.get('BULK_REQUEST_DELAY'), Promise.resolve(true))
+        })
+      })
+      .catch(err => {
+        console.log(err.message)
+        return Promise.delay(config.get('BULK_REQUEST_DELAY'), Promise.resolve(true))
+      })
+    }, {concurrency: 1})
+}
+
+// Recursively and randomly add challenger players to our baseline
+function fetchChallenger(app) {
+  return riotApi.getRandomChallengerData().then(players => {
+    return populate(app, players)
+  })
+  .then(() => {
+    return fetchChallenger(app)
+  })
+}
+
 // initialize all of the routes we want to include on the app
 
 function init(app) {
@@ -38,11 +73,6 @@ function init(app) {
         })
         res.send(champions)
       })
-  })
-
-  app.get('/api/config/:key', (req, res) => {
-    const key = _.get(req, 'params.key')
-    res.send(config.get(req.params.key))
   })
 
   app.get('/api/summoner/by-name/:name/:region', (req, res) => {
@@ -75,31 +105,9 @@ function init(app) {
       })
   })
 
-  app.get('/api/challenger/populate', (req, res) => {
-    res.status('204').send('Accepted')
-    const region = 'na'
-    const challengerChunks = _.chunk(app.challenger, config.get('MAX_CHUNK_SIZE'))
-    return Promise.map(challengerChunks, chunk => {
-      return Promise.map(chunk, player => {
-        return riotApi.getSummonerDataById(player.playerOrTeamId, region)
-          .then(summonerData => {
-            if(!_.isEmpty(summonerData.champions)) {
-              summonerData.champions = _.map(summonerData.champions, champion =>
-                getChampionDataByIdAndRegion(app, champion, region))
-            }
-            return Promise.delay(config.get('REQUEST_DELAY'), setRelations(app, summonerData))
-          })
-        }, {concurrency: 1})
-    }, {concurrency: 1})
-
-  })
-
-  app.get('/api/champions', (req, res) => {
-    return res.send(app.champions)
-  })
-
 }
 
 module.exports = {
-  init
+  init,
+  fetchChallenger
 }

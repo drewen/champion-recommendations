@@ -1,14 +1,17 @@
 {
   "name": "champion-recommendations",
   "version": "1.0.0",
-  "description": "League of Legends champion recommendations for new players based on their champion masteries and recent games.",
+  "description": "League of Legends champion recommendations for players based on their champion masteries and recent games.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev-server": "node_modules/.bin/nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "contributors": [
+    "Andrew Smith <amsmith514@gmail.com>",
+    "Zachary Deocadiz <zkdeocadiz@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "bluebird": "3.3.5",
