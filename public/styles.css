@@ -55,21 +55,32 @@ form {
 	left:10%;
 	margin-top:10vh;
 	position: relative;
+	padding:0.2em;
 }
 
 .summonername {
-	width:73%;
+	width:66.5%;
 	padding:0.2em;
 	background-color: #D2C894;
 	color: #0F0019;
 	font-family: Adobe Garamond Pro, Garamond, Times new roman, serif;
 	font-size: 1.5em;
 	display: inline-block;
+	box-shadow: none;
+	border-radius: none;
+	appearance: none;
+	border:0px;
+	border-right:1px #0F0019 solid;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }
 
 select {
-	width:10%;
+	width:17%;
 	padding:0.2em;
+	padding-left:3%;
 	background-color: #D2C894;
 	color: #0F0019;
 	font-family: Adobe Garamond Pro, Garamond, Times new roman, serif;
@@ -91,7 +102,7 @@ select {
 	padding:0.2em;
 	padding-right:0.5em;
 	padding-left:0.5em;
-	margin-right: 0.05%;
+	margin-right: 0.1%;
 }
 
 .submitting:hover {
@@ -188,6 +199,7 @@ td {
 	width:40%;
 	padding-right: 3%;
 	float: left;
+	height:100%;
 }
 
 .champpic img {
@@ -277,6 +289,19 @@ ul {
 #working {
 	z-index: 3;
 	position: relative;
+	width:60vw;
+	left:20vw;
+	background-color: #0F0019;
 }
 
+#working .free {
+	background-color: #BC486F;
+}
 
+#working li {
+	padding-bottom: 5vh;
+}
+
+#working .ifnone {
+	background-color: #271930;
+}
