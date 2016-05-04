@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="styles.css">
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.0/Chart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="app.js"></script>
 
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -23,8 +25,7 @@
 		<br>
 		<h1>What Champion Should You Play?</h1>
 
-		<form>
-			<input class="summonername" type="text" name="summonername" placeholder="Enter Summoner Name"><select name="region">
+			<input class="summonername" type="text" name="summonername" placeholder="Enter Summoner Name"><select class="region" name="region">
 			  <option value="na" selected>NA</option>
 			  <option value="eune">EUNE</option>
 			  <option value="euw">EUW</option>
@@ -37,39 +38,13 @@
 			  <option value="sea">SEA</option>
 			</select>
 			<input class="submitting" type="submit" value="Submit">
-		</form>
 	</div>
 
 	<div id="content">
-		<div id="profile">
+		<div id="profile" style="display: none;">
 			<h1>Your Profile</h1>
 			<h2>Your playstyle is:</h2>
 			<canvas id="myChart" width="50%" height="50%"></canvas>
-			<script>
-			var ctx = document.getElementById("myChart");
-
-			var myChart = new Chart(ctx, {
-			    type: 'doughnut',
-
-			    data: {
-			        labels: ["Assassin", "Fighter", "Mage", "Marksman", "Support", "Tank"],
-			        datasets: [{
-			            label: '# of Votes',
-			            data: [12, 19, 3, 5, 2, 3],
-			            backgroundColor: [
-				                "#FFC994",
-				                "#BC486F",
-				                "#2B818C",
-				                "#7123AF",
-				                "#990069",
-				                "#FF9877"
-				            ],
-			            borderWidth: [0,0,0,0,0,0]
-			        }]
-			    }
-			});
-
-			</script>
 
 			<table>
 				<tr>
@@ -106,26 +81,18 @@
 			<br><br><br>
 
 			<h2>You have played:</h2>
-			<div id="prevplayed">
-				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Kindred.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Kennen.png">
-
-				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Tristana.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Leona.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Teemo.png">
-
-				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Annie.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Shyvana.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Ashe.png">
-
-				<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/TwistedFate.png">
-			</div>
+			<div id="prevplayed"></div>
 		</div>
 
-		<div id="recommendations">
+		<div id="recommendations" style="display: none;">
 			<h1>Recommendations</h1>
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
 					<div class="graphs">
 						<div class="icons">
@@ -147,16 +114,16 @@
 						<div class="bars">
 							<ul>
 								<li>
-									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
 								</li>
 							</ul>
 						</div>
@@ -164,15 +131,13 @@
 				</div>
 			</div>
 
-			<div class="spacing"></div>
-
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
 					<div class="graphs">
 						<div class="icons">
@@ -194,16 +159,16 @@
 						<div class="bars">
 							<ul>
 								<li>
-									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
 								</li>
 							</ul>
 						</div>
@@ -213,11 +178,11 @@
 
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
 					<div class="graphs">
 						<div class="icons">
@@ -239,16 +204,16 @@
 						<div class="bars">
 							<ul>
 								<li>
-									<div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
 								</li>
 								<li>
-									<div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
 								</li>
 							</ul>
 						</div>
@@ -256,45 +221,141 @@
 				</div>
 			</div>
 
-			<div class="spacing"></div>
-
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
-					Graphs
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
-					Graphs
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div class="spacing"></div>
 
 			<div class="recs">
 				<div class="champpic">
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/Leblanc_0.jpg">
+					<img class="champion" src="">
 				</div>
 				<div class="champdesc">
 					<h2>Champion</h2>
-					Roles
+					<div class="roles"></div>
 
-					Graphs
+					<div class="graphs">
+						<div class="icons">
+							<ul>
+								<li>
+									<img src="icons/ad.svg">
+								</li>
+								<li>
+									<img src="icons/def.svg">
+								</li>
+								<li>
+									<img src="icons/ap.svg">
+								</li>
+								<li>
+									<img src="icons/diff.svg">
+								</li>
+							</ul>
+						</div>
+						<div class="bars">
+							<ul>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+								</li>
+								<li>
+									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
+<!--
 			<div style="clear:both;"></div>
 
 			<div class="ifnone">
@@ -367,11 +428,12 @@
 					Tanks are tough melee champions who sacrifice damage in exchange for powerful crowd control. While able to engage enemies in combat, a tank's purpose isn't usually to kill opponents; rather, tanks excel at disrupting enemies and diverting their focus to themselves, allowing them to lock down specific targets (or several targets at once), as well as remove (or peel) threats from their allies.
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 
 	<div style="clear:both;"></div>
 
+<!--
 	<div id="working">
 		<h1>How Does This Work?</h1>
 		<h2>Submit your Summoner Name and we’ll gather data about how you like to play. This will help us recommend champions that you might never have considered, but have similar play styles to what you already enjoy doing.</h2><br><br>
@@ -426,5 +488,6 @@
 			</div>
 		</div>
 	</div>
+-->
 </body>
 </html>
