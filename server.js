@@ -4,6 +4,7 @@ const app = express();
 const RecommendationEngine = require('./src/recommendationEngine')
 const routes = require('./src/routes')
 const riotApi = require('./src/riotApi')
+const tasks = require('./src/tasks')
 const requestPromiseCache = require('./src/requestPromiseCache')
 
 
@@ -19,20 +20,14 @@ app.recommendationEngine.init().then(() => {
 
     routes.init(app)
 
-    // Fetch static champion data on boot, then once per hour after that
-    const fetchChampions = () => {
-      return riotApi.getAllRegionChampions()
-        .then(champions => {
-          app.champions = champions
-          setTimeout(fetchChampions, 60 * 1000 * 60)
-        })
-    }
-
-    fetchChampions()
+    tasks.fetchChampions(app)
 
     // Start up the continual refresh of the baseline, which fetches a random
     // set of challenger-level players and adds them to the recommendation engine
-    routes.fetchChallenger(app)
+    tasks.fetchChallenger(app)
+
+    // Periodically clear expired data from database
+    tasks.clearExpiredData()
 
     // And start up our server.
     const serverPort = config.get('PORT')

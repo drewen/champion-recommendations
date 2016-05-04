@@ -1,65 +1,12 @@
 const _ = require('lodash')
 
 const riotApi = require('./riotApi')
+const tasks = require('./tasks')
 const config = require('../config')
 const Promise = require('bluebird')
 
 function getChampionDataByIdAndRegion(app, champion, region) {
   return _.merge(champion, _.get(app, `champions.${region}.data.${champion.championId}`, {}))
-}
-
-function setRelations(app, summonerData) {
-  const setRelationForPlayer = app.recommendationEngine.setRelation.bind(app.recommendationEngine, summonerData.id)
-  console.log(`Clearing old relations from Event Store for ${summonerData.name}...`)
-  return app.recommendationEngine.clearRelations(summonerData.id)
-    .then(() => {
-      console.log(`Setting champion masteries relations for ${summonerData.name}...`)
-      return Promise.map(summonerData.champions, champion => {
-        return setRelationForPlayer(`rank${champion.championLevel}`, champion.championId)
-      })
-    })
-    .then(() => {
-      console.log(`Setting champion gameplay relations for ${summonerData.name}...`)
-      return Promise.map(summonerData.games, game => {
-        const champion = app.champions[summonerData.region].data[game.championId]
-        return setRelationForPlayer(game.stats.win ? 'win' : 'loss', champion.championId)
-      })
-    })
-}
-
-function populate (app, players) {
-  const region = players.region
-  return Promise.map(players.entries, player => {
-    return riotApi.getSummonerDataById(player.playerOrTeamId, region)
-      .then(summonerData => {
-        // Skip the massaging and event generation if this is cached
-        if(summonerData.cached) {
-          return true
-        }
-        if(!_.isEmpty(summonerData.champions)) {
-          summonerData.champions = _.map(summonerData.champions, champion =>
-            getChampionDataByIdAndRegion(app, champion, region))
-        }
-        return setRelations(app, summonerData)
-        .then(() => {
-          return Promise.delay(config.get('BULK_REQUEST_DELAY'), Promise.resolve(true))
-        })
-      })
-      .catch(err => {
-        console.log(err.message)
-        return Promise.delay(config.get('BULK_REQUEST_DELAY'), Promise.resolve(true))
-      })
-    }, {concurrency: 1})
-}
-
-// Recursively and randomly add challenger players to our baseline
-function fetchChallenger(app) {
-  return riotApi.getRandomChallengerData().then(players => {
-    return populate(app, players)
-  })
-  .then(() => {
-    return fetchChallenger(app)
-  })
 }
 
 // initialize all of the routes we want to include on the app
@@ -86,12 +33,11 @@ function init(app) {
         }
 
         res.send(summonerData)
-        setRelations(app, summonerData)
+        tasks.setRelations(app, summonerData)
       })
   })
 }
 
 module.exports = {
-  init,
-  fetchChallenger
+  init
 }

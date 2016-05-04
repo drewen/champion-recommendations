@@ -1,6 +1,7 @@
 'use strict'
 
 const ger = require('ger')
+const moment = require('moment')
 const postgresConn = require('./postgresConn')
 
 class RecommendationEngine {
@@ -28,7 +29,7 @@ class RecommendationEngine {
       person: playerId,
       action,
       thing: champion,
-      expires_at: '2100-01-01'
+      expires_at: moment().add(60, 'minutes').format()
     }])
   }
 
