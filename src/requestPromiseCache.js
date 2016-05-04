@@ -17,7 +17,7 @@ const cache = {
       table.timestamp('expires_at').notNullable()
     })
     // convert this into a promise
-    .then(null)
+    .then(() => pg.destroy())
 
   },
   // If something were to fail in a fetch, we want to invalidate that item's cache
@@ -27,7 +27,7 @@ const cache = {
     .where('url', url)
     .del()
     // convert this into a promise
-    .then(null)
+    .then(() => pg.destroy())
   },
 
   // Either it's already in the cache and not expired, or we need to do a full refresh
