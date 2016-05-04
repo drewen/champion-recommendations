@@ -84,6 +84,7 @@ $(document).ready(function() {
     var imageSource = 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.key + '_0.jpg';
     panelEl.find('img.champion').attr('src', imageSource);
 
+    panelEl.find('.championName').text(champion.name);
     panelEl.find('.roles').text(champion.tags.join(', '));
 
     panelEl.find('.ad').css('width', champion.info.attack * 10 + '%')
