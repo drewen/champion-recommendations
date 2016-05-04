@@ -56,7 +56,7 @@ const cache = {
       if (_.isArray(data)) {
         data = { data }
       }
-      const expires = moment().add(opts.timeToLive || 60, 'minutes').format();
+      const expires = moment().add(opts.timeToLive || 30, 'minutes').format();
 
       const pg = postgresConn()
       return pg('champions.cache').insert({ url, response: data, expires_at: expires })

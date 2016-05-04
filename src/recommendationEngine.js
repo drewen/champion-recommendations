@@ -29,7 +29,7 @@ class RecommendationEngine {
       person: playerId,
       action,
       thing: champion,
-      expires_at: moment().add(60, 'minutes').format()
+      expires_at: moment().add(30, 'minutes').format()
     }])
   }
 
