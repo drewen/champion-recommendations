@@ -1,0 +1,517 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Champion Recommendations</title>
+    <style type="text/css">
+      body { 
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+	display: none;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+    </style>
+  </head>
+  <body>
+  <h1>Champion Recommendations</h1>
+    <div class="app-desc">Champion Recommendations for League of Legends</div>
+    <div class="app-desc">Version: 0.1.0</div>
+    <div class="license-info">All rights reserved</div>
+  
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  
+  <h2>Table of Contents </h2>
+  <div class="method-summary"></div>
+  
+  <ol>
+  
+  
+  
+  <li><a href="#recommendationsPlayerIdRegionGet"><code><span class="http-method">get</span> /recommendations/{playerId}/{region}</code></a></li>
+  
+  
+  
+  
+  
+  <li><a href="#summonerNameRegionGet"><code><span class="http-method">get</span> /summoner/{name}/{region}</code></a></li>
+  
+  
+  
+  </ol>
+  
+
+  
+  
+  
+  
+  <div class="method"><a name="recommendationsPlayerIdRegionGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /recommendations/{playerId}/{region}</code></pre></div>
+    <div class="method-summary">Recommendations by Player Id (<span class="nickname">recommendationsPlayerIdRegionGet</span>)</div>
+    
+    <div class="method-notes">The Recommendations endpoint provides summoners their recommendations based on similarities with other players who have used this system, as well as with current challenger-level players.\n</div>
+
+    
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">playerId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Summoner&#39;s player id </div><div class="param">region (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; League of Legends region (eg. na, euw, kr) </div>
+    </div>  <!-- field-items -->
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Champion">Champion</a>]
+      
+    </div>
+    
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    
+
+    
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+    
+      <li><code>application/json</code></li>
+    
+    </ul>
+    
+
+    <h3 class="field-label">Responses</h3>
+    
+    <h4 class="field-label">200</h4>
+    A list of champion recommendations
+    
+    
+    <h4 class="field-label">400</h4>
+    Client error, review your usage of this endpoint.
+    
+    
+    <h4 class="field-label">404</h4>
+    Summoner or data not found. Make sure you have the correct playerId and region
+    
+    
+    <h4 class="field-label">500</h4>
+    Server error, contact administrator
+    
+    
+  </div> <!-- method -->
+  <hr/>
+  
+  
+  
+  
+  
+  <div class="method"><a name="summonerNameRegionGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /summoner/{name}/{region}</code></pre></div>
+    <div class="method-summary">Summoner by Name (<span class="nickname">summonerNameRegionGet</span>)</div>
+    
+    <div class="method-notes">The Summoner endpoint returns information about a summoner by their name and region. This will also add them their information to the recommendation engine for later use with other players.\n</div>
+
+    
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Summoner&#39;s display name </div><div class="param">region (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; League of Legends region (eg. na, eune, euw) </div>
+    </div>  <!-- field-items -->
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Summoner">Summoner</a>
+      
+    </div>
+    
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    
+
+    
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="heaader">Content-Type</span> response header.
+    <ul>
+    
+      <li><code>application/json</code></li>
+    
+    </ul>
+    
+
+    <h3 class="field-label">Responses</h3>
+    
+    <h4 class="field-label">200</h4>
+    A summoner
+    
+    
+    <h4 class="field-label">400</h4>
+    Client error, review your usage of this endpoint.
+    
+    
+    <h4 class="field-label">404</h4>
+    Summoner or data not found. Make sure you have the correct playerId and region
+    
+    
+    <h4 class="field-label">500</h4>
+    Server error, contact administrator
+    
+    
+  </div> <!-- method -->
+  <hr/>
+  
+  
+  
+  
+
+  <div class="up"><a href="#__Models">Up</a></div>
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h2>Table of Contents</h2>
+  <ol>
+  
+  
+    <li><a href="#Champion"><code>Champion</code></a></li>
+  
+  
+  
+    <li><a href="#Error"><code>Error</code></a></li>
+  
+  
+  
+    <li><a href="#Game"><code>Game</code></a></li>
+  
+  
+  
+    <li><a href="#Summoner"><code>Summoner</code></a></li>
+  
+  
+  </ol>
+
+  
+  
+  <div class="model">
+    <h3 class="field-label"><a name="Champion">Champion</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> Riot&#39;s integeric champion identifier</div>
+      
+      <div class="param">championId </div><div class="param-desc"><span class="param-type">Integer</span> Riot&#39;s numeric champion identifier</div>
+      
+      <div class="param">key </div><div class="param-desc"><span class="param-type">String</span> Riot&#39;s champion identifier for images</div>
+      
+      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> Champion&#39;s name</div>
+      
+      <div class="param">title </div><div class="param-desc"><span class="param-type">String</span> Champion&#39;s title</div>
+      
+      <div class="param">tags </div><div class="param-desc"><span class="param-type">array[String]</span> </div>
+      
+      <div class="param">info </div><div class="param-desc"><span class="param-type">Object</span> Attack, Defense, Ability Power, and Difficults for champion</div>
+      
+      <div class="param">playerId </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s player id, if requested as part of a summoner</div>
+      
+      <div class="param">championLevel </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s level with this champion, if requested as part of a summoner</div>
+      
+      <div class="param">championPoints </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s points with this champion, if requested as part of a summoner</div>
+      
+      <div class="param">lastPlayTime </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s last play time with this champion, if requested as part of a summoner</div>
+      
+      <div class="param">championPointsSinceLastLevel </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s points since last level with this champion, if requested as part of a summoner</div>
+      
+      <div class="param">championPointsUntilNextLevel </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s points until next levellevel with this champion, if requested as part of a summoner</div>
+      
+      <div class="param">chestGranted </div><div class="param-desc"><span class="param-type">Boolean</span> Has this summoner received a chest for this champion, if requested as part of a summoner</div>
+      
+      <div class="param">highestGrade </div><div class="param-desc"><span class="param-type">String</span> Summoner&#39;s highest grade for this champion, if requested as part of a summoner</div>
+      
+      
+    </div>  <!-- field-items -->
+  </div>
+  
+  
+  
+  <div class="model">
+    <h3 class="field-label"><a name="Error">Error</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class="field-items">
+      <div class="param">code </div><div class="param-desc"><span class="param-type">Integer</span> </div>
+      
+      <div class="param">message </div><div class="param-desc"><span class="param-type">String</span> </div>
+      
+      <div class="param">fields </div><div class="param-desc"><span class="param-type">String</span> </div>
+      
+      
+    </div>  <!-- field-items -->
+  </div>
+  
+  
+  
+  <div class="model">
+    <h3 class="field-label"><a name="Game">Game</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class="field-items">
+      <div class="param">gameId </div><div class="param-desc"><span class="param-type">Integer</span> Identifier integer for this game</div>
+      
+      <div class="param">invalid </div><div class="param-desc"><span class="param-type">Boolean</span> Invalid flag</div>
+      
+      <div class="param">gameMode </div><div class="param-desc"><span class="param-type">String</span> Game mode played</div>
+      
+      <div class="param">gameType </div><div class="param-desc"><span class="param-type">String</span> Game type played</div>
+      
+      <div class="param">subType </div><div class="param-desc"><span class="param-type">String</span> Game sub-type played</div>
+      
+      <div class="param">mapId </div><div class="param-desc"><span class="param-type">Integer</span> Map Id played this game</div>
+      
+      <div class="param">teamId </div><div class="param-desc"><span class="param-type">Integer</span> Team Id played on the game. 100 is blue team, 200 is purple team</div>
+      
+      <div class="param">championId </div><div class="param-desc"><span class="param-type">Integer</span> Champion Id played this game</div>
+      
+      <div class="param">spell1 </div><div class="param-desc"><span class="param-type">String</span> Summoner&#39;s first spell</div>
+      
+      <div class="param">spell2 </div><div class="param-desc"><span class="param-type">String</span> Summoner&#39;s second spell</div>
+      
+      <div class="param">level </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s final level during this game</div>
+      
+      <div class="param">ipEarned </div><div class="param-desc"><span class="param-type">Integer</span> Amount of IP earned from this game</div>
+      
+      <div class="param">createDate </div><div class="param-desc"><span class="param-type">Integer</span> Timestamp of game&#39;s creation</div>
+      
+      <div class="param">fellowPlayers </div><div class="param-desc"><span class="param-type">array[Object]</span> </div>
+      
+      <div class="param">stats </div><div class="param-desc"><span class="param-type">Object</span> Statistics about the summoner&#39;s gameplay</div>
+      
+      
+    </div>  <!-- field-items -->
+  </div>
+  
+  
+  
+  <div class="model">
+    <h3 class="field-label"><a name="Summoner">Summoner</a> <a class="up" href="#__Models">Up</a></h3>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s player id</div>
+      
+      <div class="param">name </div><div class="param-desc"><span class="param-type">String</span> Summoner&#39;s name</div>
+      
+      <div class="param">profileIconId </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s current profile icon</div>
+      
+      <div class="param">summonerLevel </div><div class="param-desc"><span class="param-type">Integer</span> Summoner&#39;s level</div>
+      
+      <div class="param">revisionDate </div><div class="param-desc"><span class="param-type">Integer</span> Timestamp of last update</div>
+      
+      <div class="param">region </div><div class="param-desc"><span class="param-type">String</span> Summoner&#39;s lower-cased region (eg. na, euw, kr)</div>
+      
+      <div class="param">champions </div><div class="param-desc"><span class="param-type">array[Champion]</span> </div>
+      
+      <div class="param">games </div><div class="param-desc"><span class="param-type">array[Game]</span> </div>
+      
+      
+    </div>  <!-- field-items -->
+  </div>
+  
+  
+  </body>
+</html>

@@ -17,10 +17,6 @@ app.recommendationEngine.init().then(() => {
   // Caching layer for API requests. This initializes the Postgres DB for storage
   requestPromiseCache('', { init: true }).then(() => {
 
-    app.get('/', (req, res) => {
-      res.render('index.html');
-    });
-
     routes.init(app)
 
     // Fetch static champion data on boot, then once per hour after that

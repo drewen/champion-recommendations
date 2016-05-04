@@ -1,0 +1,224 @@
+swagger: '2.0'
+info:
+  title: Champion Recommendations
+  version: "0.1.0"
+# array of all schemes that your API supports
+schemes:
+  - http
+# will be prefixed to all paths
+basePath: /api
+produces:
+  - application/json
+paths:
+  /summoner/{name}/{region}:
+    get:
+      summary: Summoner by Name
+      description: |
+        The Summoner endpoint returns information about a summoner by their name and region. This will also add them their information to the recommendation engine for later use with other players.
+      parameters:
+        - name: name
+          in: path
+          description: Summoner's display name
+          required: true
+          type: string
+        - name: region
+          in: path
+          description: League of Legends region (eg. na, eune, euw)
+          required: true
+          type: string
+      tags:
+        - Summoners
+      responses:
+        200:
+          description: A summoner
+          schema:
+            $ref: '#/definitions/Summoner'
+        400:
+          description: Client error, review your usage of this endpoint.
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Summoner or data not found. Make sure you have the correct playerId and region
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Server error, contact administrator
+          schema:
+            $ref: '#/definitions/Error'
+  /recommendations/{playerId}/{region}:
+    get:
+      summary: Recommendations by Player Id
+      description: |
+        The Recommendations endpoint provides summoners their recommendations based on similarities with other players who have used this system, as well as with current challenger-level players.
+      parameters:
+        - name: playerId
+          in: path
+          description: Summoner's player id
+          required: true
+          type: integer
+        - name: region
+          in: path
+          description: League of Legends region (eg. na, euw, kr)
+          required: true
+          type: string
+      tags:
+        - Recommendations
+      responses:
+        200:
+          description: A list of champion recommendations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Champion'
+        400:
+          description: Client error, review your usage of this endpoint.
+          schema:
+            $ref: '#/definitions/Error'
+        404:
+          description: Summoner or data not found. Make sure you have the correct playerId and region
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Server error, contact administrator
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Summoner:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Summoner's player id
+      name:
+        type: string
+        description: Summoner's name
+      profileIconId:
+        type: integer
+        description: Summoner's current profile icon
+      summonerLevel:
+        type: integer
+        description: Summoner's level
+      revisionDate:
+        type: integer
+        description: Timestamp of last update
+      region:
+        type: string
+        description: Summoner's lower-cased region (eg. na, euw, kr)
+      champions:
+        type: array
+        items:
+          $ref: '#/definitions/Champion'
+      games:
+        type: array
+        items:
+          $ref: '#/definitions/Game'
+  Game:
+    type: object
+    properties:
+      gameId:
+        type: integer
+        description: Identifier integer for this game
+      invalid:
+        type: boolean
+        description: Invalid flag
+      gameMode:
+        type: string
+        description: Game mode played
+      gameType:
+        type: string
+        description: Game type played
+      subType:
+        type: string
+        description: Game sub-type played
+      mapId:
+        type: integer
+        description: Map Id played this game
+      teamId:
+        type: integer
+        description: Team Id played on the game. 100 is blue team, 200 is purple team
+      championId:
+        type: integer
+        description: Champion Id played this game
+      spell1:
+        type: string
+        description: Summoner's first spell
+      spell2:
+        type: string
+        description: Summoner's second spell
+      level:
+        type: integer
+        description: Summoner's final level during this game
+      ipEarned:
+        type: integer
+        description: Amount of IP earned from this game
+      createDate:
+        type: integer
+        description: Timestamp of game's creation
+      fellowPlayers:
+        type: array
+        items:
+          type: object
+          description: Identifiers for fellow players in this game
+      stats:
+        type: object
+        description: Statistics about the summoner's gameplay
+  Champion:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Riot's integeric champion identifier
+      championId:
+        type: integer
+        description: Riot's numeric champion identifier
+      key:
+        type: string
+        description: Riot's champion identifier for images
+      name:
+        type: string
+        description: Champion's name
+      title:
+        type: string
+        description: Champion's title
+      tags:
+        type: array
+        items:
+          type: string
+          description: Describes champion's roles
+      info:
+        type: object
+        description: Attack, Defense, Ability Power, and Difficults for champion
+      playerId:
+        type: integer
+        description: Summoner's player id, if requested as part of a summoner
+      championLevel:
+        type: integer
+        description: Summoner's level with this champion, if requested as part of a summoner
+      championPoints:
+        type: integer
+        description: Summoner's points with this champion, if requested as part of a summoner
+      lastPlayTime:
+        type: integer
+        description: Summoner's last play time with this champion, if requested as part of a summoner
+      championPointsSinceLastLevel:
+        type: integer
+        description: Summoner's points since last level with this champion, if requested as part of a summoner
+      championPointsUntilNextLevel:
+        type: integer
+        description: Summoner's points until next levellevel with this champion, if requested as part of a summoner
+      chestGranted:
+        type: boolean
+        description: Has this summoner received a chest for this champion, if requested as part of a summoner
+      highestGrade:
+        type: string
+        description: Summoner's highest grade for this champion, if requested as part of a summoner
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

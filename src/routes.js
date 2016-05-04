@@ -65,7 +65,7 @@ function fetchChallenger(app) {
 // initialize all of the routes we want to include on the app
 
 function init(app) {
-  app.get('/api/champion-recommendations/:playerId/:region', (req, res) => {
+  app.get('/api/recommendations/:playerId/:region', (req, res) => {
     return app.recommendationEngine.getRecommendationList(req.params.playerId)
       .then(recommendations => {
         const champions = _.map(recommendations.recommendations, recommendation => {
@@ -75,7 +75,7 @@ function init(app) {
       })
   })
 
-  app.get('/api/summoner/by-name/:name/:region', (req, res) => {
+  app.get('/api/summoner/:name/:region', (req, res) => {
     const name = _.get(req, 'params.name', '').toLowerCase()
     const region = _.get(req, 'params.region')
     return riotApi.getSummonerDataByName(name, region)
@@ -89,22 +89,6 @@ function init(app) {
         setRelations(app, summonerData)
       })
   })
-
-  app.get('/api/summoner/:id/:region', (req, res) => {
-    const id = _.get(req, 'params.id', '').toLowerCase()
-    const region = _.get(req, 'params.region')
-    return riotApi.getSummonerDataById(id, region)
-      .then(summonerData => {
-        if(!_.isEmpty(summonerData.champions)) {
-          summonerData.champions = _.map(summonerData.champions, champion =>
-            getChampionDataByIdAndRegion(app, champion, region))
-        }
-
-        res.send(summonerData)
-        setRelations(app, summonerData)
-      })
-  })
-
 }
 
 module.exports = {
