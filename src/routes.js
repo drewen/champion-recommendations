@@ -20,6 +20,12 @@ function init(app) {
         })
         res.send(champions)
       })
+      .catch(err => {
+        if (err.statusCode) {
+          return res.status(err.statusCode).send(err.error);
+        }
+        return res.status(500);
+      })
   })
 
   app.get('/api/summoner/:name/:region', (req, res) => {
@@ -34,6 +40,12 @@ function init(app) {
 
         res.send(summonerData)
         tasks.setRelations(app, summonerData)
+      })
+      .catch(err => {
+        if (err.statusCode) {
+          return res.status(err.statusCode).send(err.error);
+        }
+        return res.status(500);
       })
   })
 }
