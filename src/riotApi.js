@@ -97,9 +97,9 @@ function getRegionChampions(region) {
 
 function getAllRegionChampions() {
   console.log('Fetching champions for all regions...')
-  return Promise.map(_.keys(regionToLocation), region =>
-    getRegionChampions(region)
-    ,{ concurrently: 1 }
+  return Promise.map(_.keys(regionToLocation),
+    region => { return getRegionChampions(region) }
+    , { concurrency: 2 }
   )
   .then(allRegionChampions => _.zipObject(_.keys(regionToLocation), allRegionChampions))
 }
