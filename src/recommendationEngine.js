@@ -19,10 +19,6 @@ class RecommendationEngine {
     return this.ger.initialize_namespace('champions')
   }
 
-  tearDown() {
-    return this.ger.destroy_namespace('champions')
-  }
-
   setRelation(playerId, action, champion) {
     return this.ger.events([{
       namespace: 'champions',
