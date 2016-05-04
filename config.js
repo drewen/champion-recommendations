@@ -4,13 +4,14 @@
 // before starting the server.
 
 const defaultConfigs = {
-  SERVER_PORT: '3000',
+  PORT: '3000',
   RIOT_API_KEY: '',
   POSTGRES_HOST: 'localhost',
   POSTGRES_PORT: '5432',
   POSTGRES_USER: '',
   POSTGRES_PASSWORD: '',
   POSTGRES_DB: 'test',
+  DATABASE_URL: '',
   BULK_REQUEST_DELAY: 3000
 };
 

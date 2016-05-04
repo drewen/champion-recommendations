@@ -16,13 +16,14 @@ Server start:
 Configuration:
 To configure one of the below options, ensure they are in your local environment prior to starting via `export CONFIG_NAME=value`
 
-SERVER_PORT: Local port for server to listern on, default '3000'
+PORT: Local port for server to listern on, default '3000'
 
 API Configs:
 RIOT_API_KEY: User-specific API Key for Riot's API, default '' (*REQUIRED*)
 BULK_REQUEST_DELAY: Delay in milliseconds between continual requests, default 3000
 
 Database Configs:
+DATABASE_URL: Connection string for PostgreSQL. If not defined, as an environment variable, the system will use connection info below:
 POSTGRES_HOST: Host for PostgreSQL database, default 'localhost'
 POSTGRES_PORT: Port for PostgreSQL database, default '5432'
 POSTGRES_USER: Username for PostgreSQL database, default ''

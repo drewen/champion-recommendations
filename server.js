@@ -35,7 +35,7 @@ app.recommendationEngine.init().then(() => {
     routes.fetchChallenger(app)
 
     // And start up our server.
-    const serverPort = config.get('SERVER_PORT')
+    const serverPort = config.get('PORT')
 
     app.listen(serverPort, function () {
       console.log(`Listening on port ${serverPort}`);
