@@ -44,18 +44,24 @@ function fetchChampions(app) {
 function clearExpiredData() {
   return Promise.delay(3 * 1000 * 60, () => {
     const pg = postgresConn()
+    console.log('Removing expired rows...')
     return Promise.all([
       pg('champions.cache')
         .where('expires_at', '<=', moment().format())
         .del()
         // convert this into a promise
-        .then(null),
+        .then(rowsAffected => {
+          return rowsAffected
+        }),
       pg('champions.events')
         .where('expires_at', '<=', moment().format())
         .del()
         // convert this into a promise
-        .then(null)
-      ]).then(() => {
+        .then(rowsAffected => {
+          return rowsAffected
+        })
+      ]).then((rowsAffected) => {
+        console.log(`Removed ${rowsAffected[0] + rowsAffected[1]} expired rows.`)
         pg.destroy()
         return clearExpiredData()
       })
