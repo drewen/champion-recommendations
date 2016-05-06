@@ -5,11 +5,12 @@ const Promise = require('bluebird')
 const postgresConn = require('./postgresConn')
 const config = require('../config')
 
+const pg = postgresConn()
+
 const cache = {
 
   // Initialize the caching table
   init: function(opts) {
-    const pg = postgresConn()
     return pg.schema.createTableIfNotExists('champions.cache', table => {
       table.increments();
       table.string('url').notNullable()
@@ -17,29 +18,26 @@ const cache = {
       table.timestamp('expires_at').notNullable()
     })
     // convert this into a promise
-    .then(() => pg.destroy())
+    .then(null)
 
   },
   // If something were to fail in a fetch, we want to invalidate that item's cache
   invalidate: function(url) {
-    const pg = postgresConn()
     return pg('champions.cache')
     .where('url', url)
     .del()
     // convert this into a promise
-    .then(() => pg.destroy())
+    .then(null)
   },
 
   // Either it's already in the cache and not expired, or we need to do a full refresh
   get: function (url, opts) {
-    const pg = postgresConn()
     return pg('champions.cache')
       .select('url', 'response', 'expires_at')
       .where('url', url)
       .orderBy('expires_at', 'desc')
       .limit(1)
     .then(rows => {
-      pg.destroy()
       const cachedResponse = rows[0]
       cachedResponse.cached = true
       // Only return the cached response if it has not yet expired
@@ -56,12 +54,10 @@ const cache = {
       if (_.isArray(data)) {
         data = { data }
       }
-      const expires = moment().add(opts.timeToLive || 30, 'minutes').format();
+      const expires = moment().add(config.get('CACHE_MINUTES_TO_LIVE'), 'minutes').format();
 
-      const pg = postgresConn()
       return pg('champions.cache').insert({ url, response: data, expires_at: expires })
       .then(() => {
-        pg.destroy()
         return data
       })
     })

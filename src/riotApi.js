@@ -120,19 +120,14 @@ function getAllLeagueData(league) {
   )
 }
 
-function getRandomChallengerData() {
-  const randomRegion = _.sample(_.keys(regionToLocation))
-  return getLeagueData(randomRegion, 'challenger')
-    .then(regionPlayers => {
-      regionPlayers.region = randomRegion
-      return regionPlayers
-    })
+function getAllChallengerData() {
+  return getAllLeagueData('challenger')
 }
 
 module.exports = {
   getSummonerDataByName,
   getSummonerDataById,
-  getRandomChallengerData,
+  getAllChallengerData,
   getAllLeagueData,
   getLeagueData,
   getAllRegionChampions,

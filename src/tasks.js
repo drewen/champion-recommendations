@@ -23,8 +23,8 @@ function populate (app, players) {
 
 // Recursively and randomly add challenger players to our baseline
 function fetchChallenger(app) {
-  return riotApi.getRandomChallengerData().then(players => {
-    return populate(app, players)
+  return riotApi.getAllChallengerData().then(playersByRegion => {
+    return Promise.map(playersByRegion, players => populate(app, players))
   })
   .then(() => {
     return fetchChallenger(app)

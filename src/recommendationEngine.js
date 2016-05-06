@@ -3,6 +3,7 @@
 const ger = require('ger')
 const moment = require('moment')
 const postgresConn = require('./postgresConn')
+const config = require('../config')
 
 class RecommendationEngine {
   constructor() {
@@ -25,7 +26,7 @@ class RecommendationEngine {
       person: playerId,
       action,
       thing: champion,
-      expires_at: moment().add(30, 'minutes').format()
+      expires_at: moment().add(config.get('EVENTS_TIME_TO_LIVE'), 'minutes').format()
     }])
   }
 
@@ -48,9 +49,9 @@ class RecommendationEngine {
       // Player must have at least 5 'events', which include recent games and ranked champions
       minimum_history_required: 5,
       // Use the last 250 players worth of records to calculate the recommendation
-      neighbourhood_search_size: 5000,
+      neighbourhood_search_size: config.get('NEIGHBOURHOOD_SEARCH_SIZE'),
       // Must have 10 or more similarities to be considered
-      similarity_search_size: 10,
+      similarity_search_size: 5,
       // A player should have at most 20 records to use
       neighbourhood_size: 20,
       // Each similar player can provide 3 recommendations

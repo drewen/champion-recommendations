@@ -3,6 +3,7 @@ const knex = require('knex')
 
 // Database settings to connect to Postgres for relation storing
 function getConn() {
+  console.log('CONNECTING TO DATABASE')
   const DATABASE_URL = config.get('DATABASE_URL')
   const connection = DATABASE_URL ||
     {
@@ -16,7 +17,11 @@ function getConn() {
 
   return knex({
     client: 'pg',
-    connection
+    connection,
+    pool: {
+      min: 0,
+      max: 9
+    }
   })
 }
 
