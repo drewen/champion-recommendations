@@ -54,7 +54,7 @@ const cache = {
       if (_.isArray(data)) {
         data = { data }
       }
-      const expires = moment().add(config.get('CACHE_MINUTES_TO_LIVE'), 'minutes').format();
+      const expires = moment().add(config.get('CACHE_TIME_TO_LIVE'), 'minutes').format();
 
       return pg('champions.cache').insert({ url, response: data, expires_at: expires })
       .then(() => {

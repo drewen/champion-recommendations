@@ -4,6 +4,7 @@ const riotApi = require('./riotApi')
 const tasks = require('./tasks')
 const config = require('../config')
 const Promise = require('bluebird')
+const errors = require('request-promise/errors')
 
 function getChampionDataByIdAndRegion(app, champion, region) {
   return _.merge(champion, _.get(app, `champions.${region}.data.${champion.championId}`, {}))
@@ -20,16 +21,16 @@ function init(app) {
         })
         res.send(champions)
       })
-      .catch(err => {
-        if (err.statusCode) {
-          return res.status(err.statusCode).send(err.error);
-        }
-        return res.status(500);
+      .catch(errors.StatusCodeError, err => {
+        return res.status(err.statusCode).send(err.error);
+      })
+      .catch(errors.RequestError, err => {
+        return res.status(500).send(err.error);
       })
   })
 
   app.get('/api/summoner/:name/:region', (req, res) => {
-    const name = _.get(req, 'params.name', '').toLowerCase()
+    const name = _.get(req, 'params.name', '').toLowerCase().replace(/\s/g, '')
     const region = _.get(req, 'params.region')
     return riotApi.getSummonerDataByName(name, region)
       .then(summonerData => {
@@ -41,11 +42,11 @@ function init(app) {
         res.send(summonerData)
         tasks.setRelations(app, summonerData)
       })
-      .catch(err => {
-        if (err.statusCode) {
-          return res.status(err.statusCode).send(err.error);
-        }
-        return res.status(500);
+      .catch(errors.StatusCodeError, err => {
+        return res.status(err.statusCode).send(err.error);
+      })
+      .catch(errors.RequestError, err => {
+        return res.status(500).send(err.error);
       })
   })
 }
