@@ -51,7 +51,7 @@ class RecommendationEngine {
       // Use the last 250 players worth of records to calculate the recommendation
       neighbourhood_search_size: config.get('NEIGHBOURHOOD_SEARCH_SIZE'),
       // Must have 10 or more similarities to be considered
-      similarity_search_size: 5,
+      similarity_search_size: 20,
       // A player should have at most 20 records to use
       neighbourhood_size: 20,
       // Each similar player can provide 3 recommendations

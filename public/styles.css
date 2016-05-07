@@ -18,6 +18,7 @@ h1 {
 h2 {
 	font-weight: normal;
 	font-size: 1.5em;
+	margin-bottom: 1em;
 }
 
 #gradient {
@@ -28,7 +29,7 @@ h2 {
 	background: radial-gradient(ellipse at center, #271930 0%,#0F0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#271930', endColorstr='#0F0019',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	width:100vw;
-	height: 150vw;
+	height: 125vw;
 	margin-top: -50vw;
 	position: absolute;
 	z-index: 0;
@@ -208,6 +209,7 @@ td {
 }
 
 .champdesc {
+	color: #D2C894;
 	width:52%;
 	padding:2%;
 	padding-top: 4%;
@@ -304,4 +306,9 @@ ul {
 
 #working .ifnone {
 	background-color: #271930;
+}
+
+#chart {
+	max-height: 300px;
+	max-width: 300px;
 }

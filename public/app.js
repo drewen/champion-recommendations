@@ -1,5 +1,12 @@
 $(document).ready(function() {
+  window.currentChart = null;
+  window.currentSummoner = '';
+
+  Chart.defaults.global.legend.display = false;
+
   $('.submitting').click(function() {
+    $('#profile').hide();
+    $('#recommendations').hide();
     var summonername = $('.summonername').val();
     var region = $('.region').val();
     if (!region || !summonername) {
@@ -37,9 +44,14 @@ $(document).ready(function() {
       });
       
       $('#profile').show();
+      currentChart && currentChart.destroy();
 
-      new Chart($('#myChart'), {
+      var ctx = $('#chart');
+      ctx.width('100px');
+      ctx.height('100px');
+      currentChart = new Chart(ctx, {
         type: 'doughnut',
+        cutoutPercentage: 0,
         data: {
           labels: ["Assassin", "Fighter", "Mage", "Marksman", "Support", "Tank"],
           datasets: [{
@@ -64,23 +76,30 @@ $(document).ready(function() {
           }]
         }
       });
-
-      $.get('api/recommendations/' + summonerData.id + '/' + region, function(recommendations) {
-
-        var recommendationPanels = $('.recs');
-        $.each(recommendationPanels, function(index, panelEl) {
-          var champion = recommendations[index];
-          createRecommendationPanel($(panelEl), champion);
-        });
-        $('#recommendations').show();
-      });
+      fetchRecommendations(summonerData.id, region);
+      
     });
   });
+
+  function fetchRecommendations(summonerId, region) {
+    $.get('api/recommendations/' + summonerId + '/' + region, function(recommendations) {
+
+      var recommendationPanels = $('.recs');
+      $.each(recommendationPanels, function(index, panelEl) {
+        var champion = recommendations[index];
+        createRecommendationPanel($(panelEl), champion);
+      });
+      $('#recommendations').show();
+    });
+  }
 
   function createRecommendationPanel(panelEl, champion) {
     if (!champion) {
       return panelEl.hide();
     }
+    var championInfoLink = 'http://gameinfo.na.leagueoflegends.com/en/game-info/champions/' + champion.key.toLowerCase();
+    panelEl.find('a').attr('href', championInfoLink);
+
     var imageSource = 'http://ddragon.leagueoflegends.com/cdn/img/champion/loading/' + champion.key + '_0.jpg';
     panelEl.find('img.champion').attr('src', imageSource);
 
@@ -94,21 +113,4 @@ $(document).ready(function() {
 
     panelEl.show();
   }
-
-            // <div class="bars">
-            //   <ul>
-            //     <li>
-            //       <div class="ad" style="width:20%;"></div><div class="filler" style="width:80%;"></div>
-            //     </li>
-            //     <li>
-            //       <div class="def" style="width:30%;"></div><div class="filler" style="width:70%;"></div>
-            //     </li>
-            //     <li>
-            //       <div class="ap" style="width:60%;"></div><div class="filler" style="width:40%;"></div>
-            //     </li>
-            //     <li>
-            //       <div class="diff" style="width:40%;"></div><div class="filler" style="width:60%;"></div>
-            //     </li>
-            //   </ul>
-            // </div>
 });

@@ -44,7 +44,7 @@
 		<div id="profile" style="display: none;">
 			<h1>Your Profile</h1>
 			<h2>Your playstyle is:</h2>
-			<canvas id="myChart" width="50%" height="50%"></canvas>
+			<canvas id="chart"></canvas>
 
 			<table>
 				<tr>
@@ -87,273 +87,285 @@
 		<div id="recommendations" style="display: none;">
 			<h1>Recommendations</h1>
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 
 			<div class="recs">
-				<div class="champpic">
-					<img class="champion" src="">
-				</div>
-				<div class="champdesc">
-					<h2 class="championName">Champion</h2>
-					<div class="roles"></div>
+				<a href="">
+					<div class="champpic">
+						<img class="champion" src="">
+					</div>
+					<div class="champdesc">
+						<h2 class="championName">Champion</h2>
+						<div class="roles"></div>
 
-					<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
-								</li>
-								<li>
-									<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
-								</li>
-							</ul>
+						<div class="graphs">
+							<div class="icons">
+								<ul>
+									<li>
+										<img src="icons/ad.svg">
+									</li>
+									<li>
+										<img src="icons/def.svg">
+									</li>
+									<li>
+										<img src="icons/ap.svg">
+									</li>
+									<li>
+										<img src="icons/diff.svg">
+									</li>
+								</ul>
+							</div>
+							<div class="bars">
+								<ul>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ad" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="def" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="ap" style="width:0%;"></div></div>
+									</li>
+									<li>
+										<div class="filler" style="width:100%;"><div class="diff" style="width:0%;"></div></div>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 <!--
 			<div style="clear:both;"></div>
