@@ -36,7 +36,7 @@ h2 {
 }
 
 #logo {
-	width:50%;
+	width:100%;
 }
 
 #bar {
@@ -104,6 +104,10 @@ select {
 	padding-right:0.5em;
 	padding-left:0.5em;
 	margin-right: 0.1%;
+	-webkit-transition: background-color 0.5s ease-out 1s;
+    -moz-transition: background-color 0.5s ease-out 1s;
+    -o-transition: background-color 0.5s ease-out 1s;
+    transition: background-color 0.5s ease-out 1s;
 }
 
 .submitting:hover {
@@ -172,6 +176,10 @@ td {
 	float: left;
 	margin-bottom: 5px;
 	border:6px #0F0019 solid;
+	-webkit-transition: border-color 0.5s ease-out 1s;
+    -moz-transition: border-color 0.5s ease-out 1s;
+    -o-transition: border-color 0.5s ease-out 1s;
+    transition: border-color 0.5s ease-out 1s;
 }
 
 #prevplayed img:hover {
@@ -190,6 +198,10 @@ td {
 	background-color: #0F0019;
 	margin-right: 3%;
 	margin-bottom: 3%;
+	-webkit-transition: background-color 0.5s ease-out 1s;
+    -moz-transition: background-color 0.5s ease-out 1s;
+    -o-transition: background-color 0.5s ease-out 1s;
+    transition: background-color 0.5s ease-out 1s;
 }
 
 .recs:hover {
@@ -290,14 +302,20 @@ ul {
 
 #working {
 	z-index: 3;
-	position: relative;
+	position: absolute;
 	width:60vw;
 	left:20vw;
 	background-color: #0F0019;
+	padding:10vh;
 }
 
 #working .free {
 	background-color: #BC486F;
+	margin-left:2vh;
+	margin-right:2vh;
+	height:55vh;
+	position: relative;
+	display: inline-block;
 }
 
 #working li {
@@ -308,7 +326,39 @@ ul {
 	background-color: #271930;
 }
 
+#working .graphs {
+	padding-top: 5vh;
+}
+
+.graphs td {
+	vertical-align: top;
+	padding-bottom: 2em;
+}
+
+.showing {
+	width:15%;
+}
+
+#working img {
+	width:50%;
+	float: left;
+	padding-right: 5%;
+}
+
+#working .how {
+	width:45%;
+	margin-left: 2.5%;
+	display: inline-block;
+	float: left;
+}
+
 #chart {
 	max-height: 300px;
 	max-width: 300px;
+}
+
+#credits {
+	width:60%;
+	margin-left:20%;
+	text-align: center;
 }

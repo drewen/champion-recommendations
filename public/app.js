@@ -90,7 +90,10 @@ $(document).ready(function() {
         createRecommendationPanel($(panelEl), champion);
       });
       $('#recommendations').show();
-    });
+    }).fail(function() {
+      
+    })
+    ;
   }
 
   function createRecommendationPanel(panelEl, champion) {
