@@ -21,9 +21,8 @@
 	<div id="gradient"></div>
 	
 	<div id="bar">
-		<img id="logo" src="http://dotageeks.com/wp-content/uploads/2015/10/League-Of-Legends-Logo-2.png">
-		<br>
-		<h1>What Champion Should You Play?</h1>
+		<img id="logo" src="icons/header6.png">
+		<br><br>
 
 			<input class="summonername" type="text" name="summonername" placeholder="Enter Summoner Name"><select class="region" name="region">
 			  <option value="na" selected>NA</option>
@@ -367,9 +366,10 @@
 					</div>
 				</a>
 			</div>
-<!--
-			<div style="clear:both;"></div>
 
+
+			<div style="clear:both;"></div>
+<!--
 			<div class="ifnone">
 				<div class="free">
 					Free this week:<br>
@@ -445,7 +445,12 @@
 
 	<div style="clear:both;"></div>
 
-<!--
+	<div id="credits">
+		<h2>How does this work?</h2><br>
+		This tool was created for the 2016 League of Legends API challenge by Andrew Smith and Zach Deocadiz.  The Authors do not reflect the views or opinions of Riot Games. All images used are property of Riot Games.
+	</div>
+
+
 	<div id="working">
 		<h1>How Does This Work?</h1>
 		<h2>Submit your Summoner Name and we’ll gather data about how you like to play. This will help us recommend champions that you might never have considered, but have similar play styles to what you already enjoy doing.</h2><br><br>
@@ -455,51 +460,58 @@
 			<div class="free">
 				Champion picture
 			</div>
+
 			<div class="role">
 				<h2>Champion Name</h2>
-				Role (Assassin, Fighter, Mage, Marksman, Support, Tank)
+				Role (Assassin, Fighter, Mage, Marksman, Support, Tank). While this does not always encompass everything about a champion's playstyle, it can suggest similarities between different champions.
 
 				<div class="graphs">
-						<div class="icons">
-							<ul>
-								<li>
-									<img src="icons/ad.svg">
-								</li>
-								<li>
-									<img src="icons/def.svg">
-								</li>
-								<li>
-									<img src="icons/ap.svg">
-								</li>
-								<li>
-									<img src="icons/diff.svg">
-								</li>
-							</ul>
-						</div>
-						<div class="bars">
-							<ul>
-								<li>
-									<b>Attack Power</b><br>
-									The higher this is, the more they scale when you build more attack damage, and the more attack damage they do.
-								</li>
-								<li>
-									<b>Defense Power</b><br>
-									The higher this is, the more this champion is resistant to damage.
-								</li>
-								<li>
-									<b>Magic Power</b><br>
-									The higher this is, the more they scale when you build more ability power, and the more magic damage they do.
-								</li>
-								<li>
-									<b>Difficulty</b><br>
-									Apparently Riot has this rating although no one can agree how accurate this is. Usually higher when skill shots are part of your kit.
-								</li>
-							</ul>
-						</div>
-					</div>
+					<table>
+						<tr>
+							<td class="showing">
+								<img src="icons/ad.svg">
+							</td>
+							<td>
+								<b>Attack Power</b><br>
+								The higher this is, the more they scale when you build more attack damage, and the more attack damage they do.
+							</td>
+							<td class="showing">
+								<img src="icons/def.svg">
+							</td>
+							<td>
+								<b>Defense Power</b><br>
+								The higher this is, the more this champion is resistant to damage.
+							</td>
+						</tr>
+						<tr>
+							<td class="showing">
+								<img src="icons/ap.svg">
+							</td>
+							<td>
+								<b>Magic Power</b><br>
+								The higher this is, the more they scale when you build more ability power, and the more magic damage they do.
+							</td>
+							<td class="showing">
+								<img src="icons/diff.svg">
+							</td>
+							<td>
+								<b>Difficulty</b><br>
+								Don't be discouraged by this if it's high! If your preferred playstyle is similar, you could still do very well with the champion.
+							</td>
+						</tr>
+					</table>
+				</div>				
 			</div>
 		</div>
+		<h2>How does this tool work?</h2>
+		<div class="how">
+			<img src="icons/lv5.svg">
+			We form a profile of you based off of your champion masteries and your most recent games. While  champion roles don't directly influence this, different roles tend to be relegated to certain lanes and playstyles.
+		</div>
+		<div class="how">
+			<img src="icons/challenger.svg">
+			This profile is compared to Challenger tier players from all regions, as well as other users of this tool. Using this comparison, it suggests champions based off of weighing different parts of your profile more important than others.
+		</div>
 	</div>
--->
 </body>
 </html>
