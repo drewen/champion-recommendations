@@ -78,6 +78,9 @@ $(document).ready(function() {
 
     currentChart && currentChart.destroy();
 
+    $('#profile .loading').hide();
+    $('.playstyle').fadeIn(1000);
+
     var ctx = $('#chart');
     ctx.width('100px');
     ctx.height('100px');
@@ -109,8 +112,6 @@ $(document).ready(function() {
       }
     });
 
-    $('#profile .loading').hide();
-    $('.playstyle').fadeIn(1000);
   }
 
   function fetchRecommendations(summonerId, region) {
