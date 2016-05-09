@@ -55,7 +55,7 @@ We also acknowledged that this information is only useful to a player if it’s 
 
 ## How it works:
 
-![alt text](https://github.com/drewen/champion-recommendations/development/001.png "How it Works")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/001.png "How it Works")
 
 ## Development Process:
 
@@ -111,13 +111,13 @@ We chose not to display the following things:
 
 **Fun and Delight**
 The loading screen uses a Poro with hearts floating out of it.
-![alt text](https://github.com/drewen/champion-recommendations/development/002.gif "Poro loading")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/002.gif "Poro loading")
 
 The error page, in case someone entered in an invalid Summoner name for the region they selected or if their account hasn't passed the tutorial stage, selects a random error message. Thresh, Teemo, Braum, Ezreal, Ryze, and Aurelion Sol have something to say if you give us wrong information.
-![alt text](https://github.com/drewen/champion-recommendations/development/003.png "Braum Error Message")
-![alt text](https://github.com/drewen/champion-recommendations/development/004.png "Ryze Error Message")
-![alt text](https://github.com/drewen/champion-recommendations/development/005.png "Kindred Error Message")
-![alt text](https://github.com/drewen/champion-recommendations/development/006.png "Teemo Error Message")
-![alt text](https://github.com/drewen/champion-recommendations/development/007.png "Ezreal Error Message")
-![alt text](https://github.com/drewen/champion-recommendations/development/008.png "Aurelion Sol Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/003.png "Braum Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/004.png "Ryze Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/005.png "Kindred Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/006.png "Teemo Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/007.png "Ezreal Error Message")
+![alt text](https://github.com/drewen/champion-recommendations/blob/master/development/008.png "Aurelion Sol Error Message")
 
