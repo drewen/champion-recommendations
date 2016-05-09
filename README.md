@@ -1,8 +1,10 @@
 # League of Legends Champion Recommendations
 
-Created for submission to [Riot's API Challenge](https://developer.riotgames.com/discussion/announcements/show/eoq3tZd1)
+Created for submission to [Riot's API Challenge](https://developer.riotgames.com/discussion/announcements/show/eoq3tZd1) by Andrew Smith (fgsdfgerg) and Zach Deocadiz (firiath)
 
-## Setup:
+**Check out the demo [here](https://leaguechampionrecommendations.herokuapp.com)**
+
+## Local Setup:
 
 #### Requirements:
 * [NodeJs > 4](https://nodejs.org/en/)
