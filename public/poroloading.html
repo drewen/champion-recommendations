@@ -1,0 +1,70 @@
+<html>
+<head>
+<style>
+	#loading {
+		width:30%;
+	}
+
+	#loading #poro {
+		width:100%;
+	}
+
+	.heart1 {
+		width:25%;
+		padding-bottom: 10%;
+		animation-duration: 3s;
+		animation-name: hearting1;
+		animation-iteration-count: infinite;
+	}
+
+	.heart2 {
+		width:20%;
+		padding-bottom: 5%;
+		animation-duration: 3s;
+		animation-name: hearting2;
+		animation-iteration-count: infinite;
+	}
+
+	.heart3 {
+		width:15%;
+		margin-left: 38%;
+		animation-duration: 3s;
+		animation-name: hearting3;
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes hearting1 {
+	    0%   {opacity:0;}
+	    25%  {opacity:0;}
+	    50%  {opacity:0;}
+	    75%  {opacity:1;}
+	    100% {opacity:0;}
+	}
+
+	@keyframes hearting2 {
+	    0%   {opacity:0;}
+	    25%  {opacity:0;}
+	    50%  {opacity:1;}
+	    75%  {opacity:1;}
+	    100% {opacity:0;}
+	}
+
+	@keyframes hearting3 {
+	    0%   {opacity:0;}
+	    25%  {opacity:1;}
+	    50%  {opacity:1;}
+	    75%  {opacity:1;}
+	    100% {opacity:0;}
+	}
+
+
+</style>
+<body>
+	<div id="loading">
+		<img class="heart3" src="icons/heart.svg">
+		<img class="heart2" src="icons/heart.svg">
+		<img class="heart1" src="icons/heart.svg">
+		<img id ="poro" src="icons/poro.svg">
+	</div>
+</body>
+</html>
