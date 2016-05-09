@@ -4,24 +4,50 @@ $(document).ready(function() {
 
   Chart.defaults.global.legend.display = false;
 
+  $('#openhowitworks').click(function(e) {
+    e.preventDefault();
+    $('#howitworks').fadeIn(1500);
+    $('#bar').hide();
+    $('#content').hide();
+    $('#credits').hide();
+  });
+
+  $('#closehowitworks').click(function(e) {
+    e.preventDefault();
+    $('#howitworks').hide();
+    $('#bar').fadeIn(1500);
+    $('#content').fadeIn(1500);
+    $('#credits').fadeIn(500);
+  });
+
   $('.submitting').click(function() {
-    $('#profile').hide();
-    $('#recommendations').hide();
     var summonername = $('.summonername').val();
     var region = $('.region').val();
     if (!region || !summonername) {
       return false;
     }
+
+    $('#error').empty();
+    $('#error').hide();
+
+    $('#profile').fadeIn(1500);
+    $('#recommendations').fadeIn(1500);
+    $('#prevplayed').empty();
+    $('.recs').hide();
+    $('.playstyle').hide();
+    $('.loading').show();
+
     $.get('api/summoner/' + summonername + '/' + region, function(summonerData) {
-      createProfilePanel(summonerData.champions);
-      fetchRecommendations(summonerData.id, region);
-      
+      setTimeout(function() {
+        createProfilePanel(summonerData.champions);
+        fetchRecommendations(summonerData.id, region);
+      }, 1500);
+    }).fail(function() {
+      notFoundError();
     });
   });
 
   function createProfilePanel(champions) {
-    $('#prevplayed').empty();
-
     var roles = {
       Assassin: 0,
       Fighter: 0,
@@ -48,8 +74,7 @@ $(document).ready(function() {
       }
 
     });
-    
-    $('#profile').show();
+
     currentChart && currentChart.destroy();
 
     var ctx = $('#chart');
@@ -82,27 +107,83 @@ $(document).ready(function() {
         }]
       }
     });
+
+    $('#profile .loading').hide();
+    $('.playstyle').fadeIn(1000);
   }
 
   function fetchRecommendations(summonerId, region) {
     $.get('api/recommendations/' + summonerId + '/' + region, function(recommendations) {
 
-      var recommendationPanels = $('.recs');
-      $.each(recommendationPanels, function(index, panelEl) {
-        var champion = recommendations[index];
-        createRecommendationPanel($(panelEl), champion);
-      });
-      $('#recommendations').show();
+      setTimeout(function() {
+        var recommendationPanels = $('.recs');
+        $('#recommendations .loading').hide();
+        if (!recommendations[0]) {
+          return noRecommendationsError();
+        }
+        $.each(recommendationPanels, function(index, panelEl) {
+          var champion = recommendations[index];
+          if (!champion) {
+            return;
+          }
+          createRecommendationPanel($(panelEl), champion);
+        });
+      }, 500);
     }).fail(function() {
-      
+      noRecommendationsError();
     })
     ;
   }
 
+  function showError(errorText, imageSrc) {
+    var errorEl = $('<div />');
+    var errorImageEl = $('<img />');
+    errorImageEl.attr('src', imageSrc);
+    errorImageEl.appendTo(errorEl);
+    var errorTextEl = $('<span />');
+    errorTextEl.text(errorText);
+    errorTextEl.appendTo(errorEl);
+    errorEl.appendTo('#error');
+    $('#error').show();
+    $('#profile').hide();
+    $('#recommendations').hide();
+  }
+
+  function notFoundError() {
+    var errorMessages = [
+      {
+        key: 'AurelionSol',
+        text: 'Aurelion Sol has searched the universe, but could not find that summoner. Make sure you chose the right region and try again.'
+      },
+      {
+        key: 'Teemo',
+        text: 'Teemo has scouted high and low, but could not find that summoner. Make sure you chose the right region and try again.'
+      },
+      {
+        key: 'Ezreal',
+        text: 'Ezreal has explored the reaches of Runeterra, but could not find that summoner. Make sure you chose the right region and try again.'
+      },
+      {
+        key: 'Braum',
+        text: 'Braum has braved the chill of the Freljord, but could not find that summoner. Make sure you chose the right region and try again.'
+      },
+      {
+        key: 'Kindred',
+        text: 'Kindred has gone on a hunt, but could not find that summoner. Make sure you chose the right region and try again.'
+      }
+    ];
+
+    var errorInfo = errorMessages[Math.floor(Math.random() * 5)] || errorMessages[0];
+    showError(errorInfo.text, 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/' + errorInfo.key + '.png')
+  }
+
+  function noRecommendationsError() {
+    var errorText = 'Ryze has checked over his spell scroll, but could not come up with any recommendations. Try playing a few more games and come back to try again.';
+    var imageSrc = 'http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Ryze.png';
+    showError(errorText, imageSrc);
+  }
+
   function createRecommendationPanel(panelEl, champion) {
-    if (!champion) {
-      return panelEl.hide();
-    }
     var championInfoLink = 'http://gameinfo.na.leagueoflegends.com/en/game-info/champions/' + champion.key.toLowerCase();
     panelEl.find('a').attr('href', championInfoLink);
 
@@ -117,6 +198,6 @@ $(document).ready(function() {
     panelEl.find('.ap').css('width', champion.info.magic * 10 + '%')
     panelEl.find('.diff').css('width', champion.info.difficulty * 10 + '%')
 
-    panelEl.show();
+    panelEl.fadeIn(1500);
   }
 });

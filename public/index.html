@@ -36,55 +36,70 @@
 			  <option value="tr">TR</option>
 			  <option value="sea">SEA</option>
 			</select>
-			<input class="submitting" type="submit" value="Submit">
+			<button class="submitting">Submit</button>
+		<div id="error" style="display: none;"></div>
 	</div>
 
 	<div id="content">
 		<div id="profile" style="display: none;">
 			<h1>Your Profile</h1>
-			<h2>Your playstyle is:</h2>
-			<canvas id="chart"></canvas>
+			<div class="loading" style="display: none;">
+				<img class="heart3" src="icons/heart.svg">
+				<img class="heart2" src="icons/heart.svg">
+				<img class="heart1" src="icons/heart.svg">
+				<img id ="poro" src="icons/poro.svg">
+			</div>
+			<div class="playstyle">
+				<h2>Your playstyle is:</h2>
+				<canvas id="chart"></canvas>
 
-			<table>
-				<tr>
-					<td>
-						<div class="circle assassin"></div>
-						Assassin
-					</td>
-					<td>
-						<div class="circle fighter"></div>
-						Fighter
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="circle mage"></div>
-						Mage
-					</td>
-					<td>
-						<div class="circle marksman"></div>
-						Marksman
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="circle support"></div>
-						Support
-					</td>
-					<td>
-						<div class="circle tank"></div>
-						Tank
-					</td>
-				</tr>
-			</table>
-			<br><br><br>
+				<table>
+					<tr>
+						<td>
+							<div class="circle assassin"></div>
+							Assassin
+						</td>
+						<td>
+							<div class="circle fighter"></div>
+							Fighter
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="circle mage"></div>
+							Mage
+						</td>
+						<td>
+							<div class="circle marksman"></div>
+							Marksman
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="circle support"></div>
+							Support
+						</td>
+						<td>
+							<div class="circle tank"></div>
+							Tank
+						</td>
+					</tr>
+				</table>
+				<br><br><br>
 
-			<h2>You have played:</h2>
-			<div id="prevplayed"></div>
+				<h2>You have played:</h2>
+				<div id="prevplayed"></div>
+			</div>
 		</div>
 
 		<div id="recommendations" style="display: none;">
 			<h1>Recommendations</h1>
+			<div class="loading" style="display: none;">
+				<img class="heart3" src="icons/heart.svg">
+				<img class="heart2" src="icons/heart.svg">
+				<img class="heart1" src="icons/heart.svg">
+				<img id ="poro" src="icons/poro.svg">
+			</div>
 			<div class="recs">
 				<a href="">
 					<div class="champpic">
@@ -367,97 +382,20 @@
 				</a>
 			</div>
 
-
-			<div style="clear:both;"></div>
-<!--
-			<div class="ifnone">
-				<div class="free">
-					Free this week:<br>
-					<img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png"><img src="http://ddragon.leagueoflegends.com/cdn/6.9.1/img/champion/Vayne.png">
-				</div>
-				<div class="role">
-					<h2>Assassin</h2>
-					An assassin is an agile champion that specializes in killing or disabling high value targets. Focused on infiltration, deception, and mobility, assassins are opportunistic hunters who find favorable moments within a fight before jumping into the fray. Regardless of the size of the enemy team, assassins specialize in positioning and artful killing. They strike when the time is right – no sooner, no later.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Assassin</h2>
-					An assassin is an agile champion that specializes in killing or disabling high value targets. Focused on infiltration, deception, and mobility, assassins are opportunistic hunters who find favorable moments within a fight before jumping into the fray. Regardless of the size of the enemy team, assassins specialize in positioning and artful killing. They strike when the time is right – no sooner, no later.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Fighter</h2>
-					Fighters are a diverse group of short-ranged combatants who excel at both dealing and surviving damage. With easy access to heavy, continuous damage and a host of innate defenses, fighters thrive in extended fights as they seek out enemies to take down, but their limited range puts them at constant risk of being kept at bay (or kited) by their opponents via crowd control, range and mobility.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Mage</h2>
-					Mages are champions who typically possess great reach, ability-based area of effect damage and crowd control, and who use all of these strengths in tandem with each other to trap and destroy enemies from a distance. Specializing in magic damage, mages excel at chaining their abilities together in powerful comboes in order to win fights, though their abilities also tend to be difficult to land and can be mitigated by their targets if they react in time.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Marksman</h2>
-					A marksman is a ranged attacker that sacrifices defensive power and utility to focus on dealing strong, continuous damage to individual targets. Typically focused on using their basic attacks more than their abilities, marksmen have the capability to scale and deal out devastating levels of damage in the late phase of any game.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Support</h2>
-					Supports are the most selfless champions in the game, forgoing personal power to assist their allies with potent utility and keep enemies at bay with crowd control. Weak when alone, supports are capable of massively amplifying their teammates' power to become the strongest class in group combat (or teamfights), supplying crucial utility or crowd control at clutch moments to save allies from death and enable takedowns on the enemy team.
-				</div>
-			</div>
-
-			<div class="ifnone">
-				<div class="free">
-					Free this week:
-				</div>
-				<div class="role">
-					<h2>Tank</h2>
-					Tanks are tough melee champions who sacrifice damage in exchange for powerful crowd control. While able to engage enemies in combat, a tank's purpose isn't usually to kill opponents; rather, tanks excel at disrupting enemies and diverting their focus to themselves, allowing them to lock down specific targets (or several targets at once), as well as remove (or peel) threats from their allies.
-				</div>
-			</div>
-		</div>-->
+		</div>
+		<div id="credits">
+			<a id="openhowitworks" href="#"><h2>How does this work?</h2></a><br>
+			This tool was created for the 2016 League of Legends API challenge by Andrew Smith and Zach Deocadiz.  The Authors do not reflect the views or opinions of Riot Games. All images used are property of Riot Games.
+		</div>
 	</div>
 
-	<div style="clear:both;"></div>
-
-	<div id="credits">
-		<h2>How does this work?</h2><br>
-		This tool was created for the 2016 League of Legends API challenge by Andrew Smith and Zach Deocadiz.  The Authors do not reflect the views or opinions of Riot Games. All images used are property of Riot Games.
-	</div>
-
-
-	<div id="working">
-		<h1>How Does This Work?</h1>
+	<div id="howitworks" style="display: none">
+		<h1>How Does This Work? <a href="#" id="closehowitworks">X</a></h1>
 		<h2>Submit your Summoner Name and we’ll gather data about how you like to play. This will help us recommend champions that you might never have considered, but have similar play styles to what you already enjoy doing.</h2><br><br>
 
 		<h2>Reading and Using this Tool</h2>
-		<div class="ifnone">
-			<div class="free">
+		<div class="guide">
+			<div class="champpic">
 				Champion picture
 			</div>
 
@@ -513,5 +451,6 @@
 			This profile is compared to Challenger tier players from all regions, as well as other users of this tool. Using this comparison, it suggests champions based off of weighing different parts of your profile more important than others.
 		</div>
 	</div>
+
 </body>
 </html>
