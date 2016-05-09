@@ -3,6 +3,7 @@ $(document).ready(function() {
   window.currentSummoner = '';
 
   Chart.defaults.global.legend.display = false;
+  Chart.defaults.global.tooltips.enabled = false;
 
   $('#openhowitworks').click(function(e) {
     e.preventDefault();
