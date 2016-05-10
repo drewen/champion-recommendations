@@ -78,7 +78,7 @@ To meet this need, we ensured that the continual fetching of current challenger 
 
 Once we had tried a few iterations of this, we realized we could parallelize across different regions due to the rate limit not applying across regions. With this knowledge, we optimized the data fetching to continually retrieve a large sample of player data while remaining entirely within the realm of Riot's rate limits.
 
-While there were many opportunities to say "Let's just get a production key", the challenges we faced by encountering this constraint ensured we made every attempt possible to create a more durable, rigid end result.
+While there were many opportunities to say "Let's just get a production key" during development and completely ignore any possibility of rate limited requests, the challenges we faced by encountering this constraint ensured we made every attempt possible to create a more durable, rigid end result.
 
 #### Design
 
