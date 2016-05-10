@@ -21,6 +21,10 @@ $(document).ready(function() {
     $('#credits').fadeIn(500);
   });
 
+  $('#gradient').click(function() {
+    $('#closehowitworks').click();
+  });
+
   $('.submitting').click(function() {
     var summonername = $('.summonername').val();
     var region = $('.region').val();
