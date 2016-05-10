@@ -462,18 +462,29 @@ a#closehowitworks {
 #error span {
     display: inline-block;
     float: right;
-    margin-top: 25px;
-    margin-right: 100px;
-    width: 65%;
+    padding: 0 0 25px;
+    margin: 0;
+    width: 100%;
+    background-color: #0F0019;
 }
 
 @media screen and (min-width: 1150px) {
+	#error span {
+    margin-top: 25px;
+    margin-right: 75px;
+	}
+
 	.recs {
 		width: 48%;
 	}
 }
 
 @media screen and (min-width: 950px) {
+	#error span {
+    margin-right: 25px;
+    width: 65%;
+	}
+
 	#prevplayed img {
 		float: left;
 		width: 40%;
