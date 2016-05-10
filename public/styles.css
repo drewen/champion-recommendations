@@ -476,14 +476,15 @@ a#closehowitworks {
 @media screen and (min-width: 950px) {
 	#prevplayed img {
 		float: left;
+		width: 40%;
 	}
 
 	#profile {
-		padding-right: 5%;
+		padding-right: 3%;
 		width: 30%;
 	}
 
 	#recommendations {
-		width: 65%;
+		width: 67%;
 	}
 }
